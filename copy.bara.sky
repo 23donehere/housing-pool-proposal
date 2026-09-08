@@ -1,0 +1,103 @@
+# copy.bara.sky
+# Turbo Copybara config for housing-pool-proposal
+# Repo: https://github.com/23donehere/housing-pool-proposal
+#
+# Dry-run:   copybara copy.bara.sky export_public --dry-run
+# Run:       copybara copy.bara.sky export_public
+# PR mode:   copybara copy.bara.sky export_pr
+
+ORIGIN_URL = "https://github.com/23donehere/housing-pool-proposal.git"
+DEST_URL = "https://github.com/23donehere/housing-pool-proposal.git"
+
+# Shared file set: proposal docs only. Keep secrets, keys, and local env out.
+ORIGIN_FILES = glob(
+    ["**"],
+    exclude = [
+        ".git/**",
+        ".env",
+        ".env.*",
+        "**/*.pem",
+        "**/*.key",
+        "**/node_modules/**",
+        "**/.DS_Store",
+        "**/private/**",
+    ],
+)
+
+# ---------------------------------------------------------------------------
+# Workflow: squash export onto main (clean public snapshot)
+# ---------------------------------------------------------------------------
+core.workflow(
+    name = "export_public",
+    origin = git.github_origin(
+        url = ORIGIN_URL,
+        ref = "main",
+    ),
+    destination = git.github_destination(
+        url = DEST_URL,
+        push = "main",
+        fetch = "main",
+    ),
+    origin_files = ORIGIN_FILES,
+    destination_files = glob(["**"]),
+    authoring = authoring.pass_thru("Housing Pool Proposal <noreply@users.noreply.github.com>"),
+    mode = "SQUASH",
+    transformations = [
+        # Keep public wording consistent if internal labels leak in.
+        core.replace(
+            before = "internal-only",
+            after = "public",
+            paths = glob(["**/*.md"]),
+        ),
+    ],
+)
+
+# ---------------------------------------------------------------------------
+# Workflow: open a GitHub PR instead of pushing straight to main
+# ---------------------------------------------------------------------------
+core.workflow(
+    name = "export_pr",
+    origin = git.github_origin(
+        url = ORIGIN_URL,
+        ref = "main",
+    ),
+    destination = git.github_pr_destination(
+        url = DEST_URL,
+        destination_ref = "main",
+        pr_branch = "copybara/export-public",
+        title = "Copybara: export housing-pool proposal",
+        body = "Automated Copybara export of the housing-pool proposal docs.",
+        integrates = [],
+    ),
+    origin_files = ORIGIN_FILES,
+    destination_files = glob(["**"]),
+    authoring = authoring.pass_thru("Housing Pool Proposal <noreply@users.noreply.github.com>"),
+    mode = "SQUASH",
+    transformations = [
+        core.replace(
+            before = "internal-only",
+            after = "public",
+            paths = glob(["**/*.md"]),
+        ),
+    ],
+)
+
+# ---------------------------------------------------------------------------
+# Workflow: keep commit history (use when you want iterative sync)
+# ---------------------------------------------------------------------------
+core.workflow(
+    name = "export_iterative",
+    origin = git.github_origin(
+        url = ORIGIN_URL,
+        ref = "main",
+    ),
+    destination = git.github_destination(
+        url = DEST_URL,
+        push = "main",
+        fetch = "main",
+    ),
+    origin_files = ORIGIN_FILES,
+    destination_files = glob(["**"]),
+    authoring = authoring.pass_thru("Housing Pool Proposal <noreply@users.noreply.github.com>"),
+    mode = "ITERATIVE",
+)
