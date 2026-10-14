@@ -6,7 +6,6 @@ Adaptation of TRON, Tether (USDT), and Bitcoin within a National Housing Pool Me
 **Date**  
 5 August 2026
 
-> **[NEW]**
 **Revised draft**  
 13 October 2026 (revision addressing approvals sequencing, oversight/custody single points of failure, and valuation/top-up/liquidation rules). All thresholds, percentages and deadlines marked *illustrative* are placeholders to be calibrated through modelling and stress testing; they are not recommendations or facts.
 
@@ -17,8 +16,6 @@ This proposal is maintained under the wallet/CLI related GitHub workspace for do
 
 ## 1. Executive Summary
 
-> **[REVISED — replaces original L16]**
-
 This proposal outlines a structured mechanism that would allow eligible Australians to allocate a defined percentage of their superannuation balances into a dedicated **Housing Pool** operated by an APRA-regulated superannuation trustee through an authorised special-purpose vehicle (SPV), with the Reserve Bank of Australia (RBA) invited to take an optional advisory role.
 
 The allocated portion could incorporate regulated exposure to **Bitcoin, Tether (USDT on TRON or other chains), and TRON (TRX)** under strict custodial and risk-management rules. Once the allocated amount reaches prescribed thresholds, it could be used as **collateral** to support home-loan borrowing capacity or deposit requirements, without requiring a full withdrawal from superannuation.
@@ -27,8 +24,6 @@ The model aims to:
 - Improve housing accessibility while preserving long-term retirement savings.
 - Create a transparent, regulated pathway for digital assets within the superannuation and housing finance system.
 - Maintain the sole-purpose test and prudential integrity of the superannuation system.
-
-> **[REVISED — replaces original L25]**
 
 **This is a conceptual policy proposal only.** Full implementation would require legislative and regulatory change and the involvement of Treasury, APRA, ASIC, AUSTRAC and the ATO, with the RBA in an optional advisory role. Rather than waiting for every approval before anything is tested, implementation is staged (Section 7): a Phase 0 pilot that needs no legislative change, followed by gated phases that add collateral use and then digital assets as each approval is obtained.
 
@@ -54,30 +49,22 @@ This proposal seeks a middle path: **allocation rather than withdrawal**, with a
 - The allocation remains within the superannuation system (or a tightly regulated parallel vehicle) and continues to benefit from concessional tax treatment, subject to existing contribution and preservation rules.
 - The portion is ring-fenced for housing-related purposes and cannot be used for general consumption or investment outside the approved framework.
 
-> **[REVISED — replaces original §3.2, L49–52]**
-
 ### 3.2 Trustee, Special-Purpose Vehicle and Oversight
 - **Primary structure.** The Housing Pool would be operated by an APRA-regulated RSE licensee (superannuation trustee) through an authorised SPV, for example a dedicated investment option or a pooled superannuation trust (vehicle to be confirmed by legal advice). The trustee is accountable for investment governance, valuation, custody oversight and member disclosure under existing APRA prudential standards (including SPS 530 Investment Governance and CPS 230 Operational Risk Management) and ASIC conduct obligations.
 - **Role of the RBA (optional, advisory).** APRA, not the RBA, prudentially supervises superannuation funds. The RBA would be invited to advise on financial-stability matters (through existing Council of Financial Regulators channels) and to receive aggregate pool data. The Housing Pool does not depend on the RBA taking any operational, custodial or approval role.
 - **Transparency.** The trustee would publish aggregate pool size, asset composition, the distribution of coverage ratios (Section 3.5), top-up calls issued and liquidations executed, at least quarterly (*illustrative*), and provide the same data to APRA and, if it accepts the advisory role, the RBA.
 - Funds and approved digital assets would be held under the multi-custodian arrangements in Section 3.3.
 
-
 ### 3.3 Incorporation of TRON, Tether and Bitcoin
 - **Bitcoin**: Recognised as a high-volatility, high-liquidity digital asset. Subject to significant haircut (e.g., 40–60 % of market value for collateral purposes).
 - **Tether (USDT)**: Stablecoin component. Preferred on regulated or highly liquid chains (including TRON where compliance is demonstrated). Lower haircut due to price stability, subject to issuer and reserve transparency requirements.
 - **TRON (TRX)**: Limited allocation permitted only after meeting liquidity, custody and compliance thresholds. Higher risk weighting.
 
-> **[REVISED — replaces original L58]**
-
 - **Multi-custodian holding.** All digital assets must be held in segregated, audited custody accounts in the name of the trustee / SPV, split across **at least two independent regulated custodians** (no common ownership, key-management provider or sub-custodian), with no single custodian holding more than a set share of any asset (*illustrative: 60 %*). Each custodian must hold an appropriate Australian financial services licence and meet ASIC RG 133 asset-holding standards, be registered with AUSTRAC as a virtual asset service provider, be managed as a material service provider under CPS 230, and meet the digital asset platform / tokenised custody licensing that applies once the Digital Assets Framework Act commences (8 April 2027). Personal wallets or unregulated exchanges are prohibited.
 - **Proof of reserves.** Daily (*illustrative*) reconciliation of on-chain balances at each custodian against the trustee's member ledger, covering both assets and member entitlements; independent assurance of reserves and custodian controls at least quarterly (*illustrative*), published in aggregate. A reconciliation break suspends new allocations until resolved.
 - **Custodian failure and asset migration.** A pre-agreed plan covering: (a) triggers: insolvency event, licence suspension or cancellation, failed reconciliation, outage beyond a set period (*illustrative: 48 hours*) or material security incident; (b) actions: stop new deposits to and liquidations from the affected custodian, then migrate assets to the remaining custodian(s) using pre-approved transfer procedures and pre-whitelisted addresses; (c) a third, standby custodian with due diligence complete but unfunded; (d) an annual migration rehearsal including a test transfer; (e) during migration, affected assets are valued at the last reconciled balance with an additional haircut (*illustrative*), and no top-up call is enforced against a member solely because of a custodian outage.
 
-> **[REVISED — replaces original L59]**
-
 - Valuation occurs **daily** for all pool assets, using multiple independent price sources (Section 3.5).
-
 
 ### 3.4 Threshold Mechanism for Collateral Use
 The allocated Housing Pool balance becomes eligible as collateral once it reaches defined thresholds. Suggested structure for discussion:
@@ -90,14 +77,10 @@ The allocated Housing Pool balance becomes eligible as collateral once it reache
 
 **Key rules:**
 
-> **[REVISED — replaces original L71–74 (L74 retained unchanged)]**
-
 - Haircuts applied according to asset class volatility and liquidity (Bitcoin higher haircut than Tether), calibrated and reviewed through the stress tests in Section 3.7.
 - Collateral value is marked to market daily. Falls in value trigger the coverage bands, top-up calls and deadlines in Section 3.5; if a call is not met, the pre-agreed staged liquidation rules in Section 3.6 apply. No step is discretionary.
 - The member retains beneficial interest in the assets (subject to superannuation rules). Assets are sold only under the de-risking rules in Section 3.6 or, on loan default, the enforcement rules in Section 3.6, both agreed by the member at enrolment and disclosed in the product disclosure statement.
 - Lenders would still apply their normal serviceability, LVR and credit assessment rules. The Housing Pool collateral would supplement, not replace, traditional underwriting.
-
-> **[NEW — §3.5 to §3.7]**
 
 ### 3.5 Daily Valuation, Coverage Bands and Top-Up Calls
 **Definitions**
@@ -156,12 +139,9 @@ Run before each phase gate (Section 7), quarterly, and after any large market mo
 
 The example shows that stablecoin issuer failure, not BTC volatility, is the dominant tail risk. This supports a cap on any single stablecoin's share of the pool.
 
-
 ---
 
 ## 4. Operational Flow (Simplified)
-
-> **[REVISED — replaces original L80–86]**
 
 1. Member elects allocation percentage and asset mix (within approved limits) and agrees to the valuation, top-up and liquidation rules (Sections 3.5–3.6).
 2. Assets are transferred to the trustee's SPV and held across at least two regulated custodians (Section 3.3).
@@ -178,20 +158,14 @@ The example shows that stablecoin issuer failure, not BTC volatility, is the dom
 - Creates a regulated on-ramp for digital assets into the housing finance system.
 - Maintains the long-term retirement purpose of superannuation.
 
-> **[REVISED — replaces original L93]**
-
 - Provides transparency and oversight through APRA-supervised trustee reporting, with optional RBA advisory input.
 - Encourages institutional-grade custody and compliance standards for digital assets.
 
 ## 6. Risks and Mitigations
 
-> **[REVISED — replaces original L97]**
-
 - **Volatility**: Conservative haircuts, daily valuation, coverage bands with top-up deadlines, staged liquidation and regular stress testing (Sections 3.5–3.7).
 - **Liquidity risk**: Limit allocation percentages and require high-liquidity assets (BTC, major stablecoins).
 - **Regulatory & compliance**: Require licensed custodians, AUSTRAC compliance, and alignment with the Digital Assets Framework.
-
-> **[REVISED — replaces original L100; NEW bullet added]**
 
 - **Systemic risk**: Aggregate exposure limits, stress testing, and reporting to APRA, with optional RBA advisory input.
 - **Custodian and operational risk** *(new)*: At least two independent regulated custodians, proof of reserves, and a tested custodian-failure and asset-migration plan (Section 3.3).
@@ -199,8 +173,6 @@ The example shows that stablecoin issuer failure, not BTC volatility, is the dom
 - **Sole-purpose test**: Design must ensure the primary purpose remains retirement benefits, with housing support as a permitted pathway.
 
 ---
-
-> **[REVISED — replaces original §7, L106–111]**
 
 ## 7. Implementation Roadmap and Approvals
 
@@ -241,9 +213,8 @@ Each phase proceeds only when its approvals are in place **and** a gate is passe
 
 **Critical path:** items 6–7 for Phase 1; Digital Assets Framework Act commencement plus items 9–11 for Phase 2; item 13 only for Phase 3. All other items run in parallel.
 
-- Development of custody, valuation and reporting standards for digital assets within the pool (retained from original L109; see Sections 3.3 and 3.5).
-- Clear exit and default rules that protect both members and the broader financial system (retained from original L111; see Sections 3.5–3.6).
-
+- Development of custody, valuation and reporting standards for digital assets within the pool.
+- Clear exit and default rules that protect both members and the broader financial system.
 
 ---
 
@@ -252,8 +223,6 @@ Each phase proceeds only when its approvals are in place **and** a gate is passe
 This proposal offers a structured way to link a portion of Australians’ superannuation savings with housing finance while carefully incorporating selected digital assets (Bitcoin, Tether, and limited TRON exposure) under regulated conditions. By using thresholds and collateral recognition rather than outright withdrawal, the model seeks to balance housing accessibility with the long-term integrity of the retirement system.
 
 Further detailed modelling, legal drafting and stakeholder consultation would be required before any implementation.
-
-> **[NEW — §9]**
 
 ## 9. References (added in revision)
 - RBA, *The Australian Regulatory Framework*: https://www.rba.gov.au/fin-stability/reg-framework/overview.html
